@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import styles from './AddNewGroupStyle.module.css'
 const AddNewGroup = ({addGroup}) => {
     const [newGroup , setNewGroup] = useState("");
     const changeHandler=(event)=>{
@@ -18,18 +17,18 @@ const AddNewGroup = ({addGroup}) => {
         }
     }
     return (
-        <div className={styles.container}>
-            <h3 className={styles.title}>Add New Group For Products</h3>
-            <p>Enter name o the new group:</p>
-            <div className={styles.inputContainer}>
+        <div className={"container"}>
+            <h3 className={"title"}>Add New Group For Products</h3>
+            <p>Enter name of the new group:</p>
+            <div className={"inputContainer"}>
                 <input
                     type="text"
                     value={newGroup}
                     placeholder={"New Group name"}
                     onChange={changeHandler}
-                    className={styles.input}
+                    className={"input"}
                 />
-                <button onClick={addHandler} className={styles.add}>ADD</button>
+                <button onClick={addHandler} className={"add"}>ADD</button>
             </div>
 
         </div>

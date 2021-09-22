@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Select from "react-select";
-import styles from './AddNewProductStyle.module.css'
 const AddNewProduct = ({categories , addNewProductHandler}) => {
     const [newProduct , setNewProduct] = useState("");
     const [category , setCategory] = useState("");
@@ -28,23 +27,23 @@ const AddNewProduct = ({categories , addNewProductHandler}) => {
         }
     }
     return (
-        <div className={styles.container}>
-            <h3 className={styles.title}>Add New Product</h3>
+        <div className={"container"}>
+            <h3 className={"title"}>Add New Product</h3>
             <p>enter the product name:</p>
             <input
                 type="text"
                 value={newProduct}
                 onChange={changeHandler}
-                className={styles.input}
+                className={"input"}
                 placeholder={"Product Name"}
             />
             <Select
                 onChange={categoryHandler}
                 options={options}
                 value={category}
-                className={styles.select}
+                className={"select"}
             />
-            <button className={styles.add} onClick={addHandler}>ADD</button>
+            <button className={"add"} onClick={addHandler}>ADD</button>
         </div>
     );
 };

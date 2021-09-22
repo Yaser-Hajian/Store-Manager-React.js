@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './App.css';
 import AddNewGroup from "./Components/AddNewGroup/AddNewGroup";
 import AddNewProduct from "./Components/AddNewProduct/AddNewProduct";
+import ListOfProducts from "./Components/ListOfProducts/ListOfProducts";
 
 function App() {
     const [groups , setGroups] = useState([]);
@@ -24,11 +25,17 @@ function App() {
         copy_groups[index] = copy_group;
         setGroups(copy_groups);
     }
+    const getMembersOfCategory=(category)=>{
+        const index = groups.findIndex(group => group.name === category);
+        const members = [...groups[index].members];
+        return members;
+    }
   return (
     <div className="App">
       <h1>Store Management</h1>
         <AddNewGroup addGroup={addNewGroupHandler}/>
         <AddNewProduct categories={categories} addNewProductHandler={addNewProductHandler}/>
+        <ListOfProducts categories={categories} getMembers={getMembersOfCategory}/>
     </div>
   );
 }
