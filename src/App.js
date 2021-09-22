@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React, {useState} from "react";
 import './App.css';
+import AddNewGroup from "./Components/AddNewGroup/AddNewGroup";
 
 function App() {
+    const [groups , setGroups] = useState([]);
+    const addNewGroupHandler=(newGroup)=>{
+        const copy_of_grops = [...groups];
+        copy_of_grops.push(newGroup);
+        setGroups(copy_of_grops);
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Store Management</h1>
+        <AddNewGroup addGroup={addNewGroupHandler}/>
     </div>
   );
 }
