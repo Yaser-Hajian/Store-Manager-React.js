@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
-import AddNewGroup from "./Components/AddNewGroup/AddNewGroup";
-import AddNewProduct from "./Components/AddNewProduct/AddNewProduct";
-import ListOfProducts from "./Components/ListOfProducts/ListOfProducts";
+import AddNewGroup from "./Components/AddNewGroup";
+import AddNewProduct from "./Components/AddNewProduct";
+import ListOfProducts from "./Components/ListOfProducts";
 
 function App() {
     const [groups , setGroups] = useState([]);
@@ -10,10 +10,27 @@ function App() {
     const [category , setCategory] = useState("");
     const [membersForView , setMembersForView] = useState([]);
     useEffect(()=>{
+        const savedGroups = JSON.parse(localStorage.getItem("groups"));
+        const savedCategories = JSON.parse(localStorage.getItem("categories"));
+        if (savedGroups){
+            setGroups(savedGroups);
+        }
+        if (savedCategories){
+            setCategories(savedCategories);
+        }
+    },[]);
+    useEffect(()=>{
         if (category!==""){
             setMembersForView(getMembersOfCategory(category));
         }
     },[groups ,category ]);
+    useEffect(()=>{
+        localStorage.setItem("groups",JSON.stringify(groups));
+    },[groups]);
+    useEffect(()=>{
+        localStorage.setItem("categories",JSON.stringify(categories));
+    },[categories]);
+
     const addNewGroupHandler=(newGroup)=>{
         const copy_of_groups = [...groups];
         copy_of_groups.push(newGroup);
