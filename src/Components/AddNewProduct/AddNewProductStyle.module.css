@@ -1,0 +1,29 @@
+.container{
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius:10px;
+    padding:20px;
+    margin:10px auto;
+}
+.title{
+    margin-top:0;
+}
+.input{
+    width:250px;
+    padding:5px 10px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.add{
+    padding:5px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: white;
+    background-color: #0EA5E9;
+    border:1px solid #0EA5E9;
+}
+.select{
+    width:200px;
+    margin: 10px auto;
+}
