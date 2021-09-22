@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import Select from "react-select";
 
-const ListOfProducts = ({categories , getMembers}) => {
-    const [category , setCategory] = useState("");
-    const [members , setMembers] = useState([]);
+const ListOfProducts = ({categories , category,setCategory , members , setMembers}) => {
     const categoryHandler=(event)=>{
         setCategory(event);
-        setMembers(getMembers(event.label));
+        setMembers(members);
     }
     const options = []
     {
@@ -29,9 +27,9 @@ const ListOfProducts = ({categories , getMembers}) => {
                     {
                         members.length ===0?
                             (category === ""?
-                                <p>select a category</p>
+                                <p className={"info"}>select a category</p>
                                 :
-                                <p>you don't have any product in this category</p>)
+                                <p className={"info"}>you don't have any product in this category</p>)
 
                             :
                             members.map(member=>(
