@@ -14,11 +14,21 @@ function App() {
         copy_of_categories.push(newGroup.name);
         setCategories(copy_of_categories);
     }
+    const addNewProductHandler=(name , category)=>{
+        const copy_groups = [...groups];
+        const index = groups.findIndex(group => group.name === category);
+        const copy_group = {...groups[index]};
+        const members = [...copy_group.members];
+        members.push(name);
+        copy_group.members = members;
+        copy_groups[index] = copy_group;
+        setGroups(copy_groups);
+    }
   return (
     <div className="App">
       <h1>Store Management</h1>
         <AddNewGroup addGroup={addNewGroupHandler}/>
-        <AddNewProduct categories={categories}/>
+        <AddNewProduct categories={categories} addNewProductHandler={addNewProductHandler}/>
     </div>
   );
 }

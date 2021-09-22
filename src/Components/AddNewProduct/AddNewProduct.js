@@ -1,19 +1,30 @@
 import React, {useState} from 'react';
 import Select from "react-select";
 import styles from './AddNewProductStyle.module.css'
-const AddNewProduct = ({categories}) => {
+const AddNewProduct = ({categories , addNewProductHandler}) => {
     const [newProduct , setNewProduct] = useState("");
     const [category , setCategory] = useState("");
     const changeHandler=(event)=>{
         setNewProduct(event.target.value);
     }
     const categoryHandler=(event)=>{
-        setCategory(event.label);
+        setCategory(event);
     }
     const options = []
     {
         for (let i = 0; i < categories.length; i++) {
             options.push({value:categories[i] , label:categories[i]})
+        }
+    }
+    const addHandler=()=>{
+        if (newProduct === ""){
+            alert("Please fill out the product name")
+        }else if(category === ""){
+            alert("Please select the product category")
+        }else {
+            addNewProductHandler(newProduct,category.label);
+            setCategory("");
+            setNewProduct("");
         }
     }
     return (
@@ -30,9 +41,10 @@ const AddNewProduct = ({categories}) => {
             <Select
                 onChange={categoryHandler}
                 options={options}
+                value={category}
                 className={styles.select}
             />
-            <button className={styles.add}>ADD</button>
+            <button className={styles.add} onClick={addHandler}>ADD</button>
         </div>
     );
 };
